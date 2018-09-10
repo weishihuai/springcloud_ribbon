@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Ribbon负载均衡客户端需向spring ioc容器注入RestTemplate
  * Spring Cloud服务调用主要有两种：(Ribbon + RestTemplate) / Feign远程服务调用
- *
+ * Ribbon是一个负载均衡客户端，可以很好的控制htt和tcp的一些行为。Feign默认集成了ribbon。
  * @author weishihuai
  * @date 2018/09/09 21:34
  */

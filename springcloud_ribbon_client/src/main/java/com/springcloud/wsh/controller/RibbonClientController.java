@@ -1,6 +1,8 @@
 package com.springcloud.wsh.controller;
 
 import com.springcloud.wsh.service.RibbonClientService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,13 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class RibbonClientController {
+    private static Logger logger = LoggerFactory.getLogger(RibbonClientController.class);
 
     @Autowired
     private RibbonClientService ribbonClientService;
 
     @RequestMapping("/testRibbonService")
     public String testRibbonService(@RequestParam String name) {
-        return ribbonClientService.testRibbonService(name);
+        String result = ribbonClientService.testRibbonService(name);
+        //通过打印日志可用看到RibbonService负载均衡调用的效果
+        logger.info(result);
+        return result;
     }
 
 }
